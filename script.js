@@ -95,4 +95,34 @@ const createUsername = function (accs) {
   });
 };
 createUsername(accounts);
-console.log(accounts);
+
+//calculate total balance
+const calcBalance = function (accs) {
+  accs.forEach(function (acc) {
+    acc.totalBalance = acc.movements.reduce(function (acc, curr) {
+      acc += curr;
+      return acc;
+    }, 0);
+    return acc.totalBalance;
+  });
+};
+
+calcBalance(accounts);
+
+//printBalance
+labelBalance.textContent = `${account1.totalBalance} €`;
+
+/*const calcPrintBalance = function (movement) {
+  const totalBalance = movement.reduce(function (acc, curr) {
+    acc += curr;
+    return acc;
+  }, 0);
+
+  return totalBalance;
+};
+account1.totalBalance = calcPrintBalance(account1.movements);
+console.log(account1);*/
+/*const totalBalance = movements.reduce(function (acc, curr) {
+  acc += curr;
+  return acc;
+}, 0);*/
